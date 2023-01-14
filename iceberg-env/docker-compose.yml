@@ -21,7 +21,14 @@ services:
     container_name: minio
     command: server /data --console-address ":9001"
 
+  spark_notebook:
+    image: alexmerced/spark33-notebook
+    ports: 
+      - 8888:8888
+    env_file: .env
+    container_name: notebook
+
 networks:
     default:
-      name: dremio_minio
+      name: iceberg_env
       driver: bridge
